@@ -1,0 +1,231 @@
+2025-01-10 06:43:53 - Failed to prepare statement: Unknown column 'id' in 'where clause'
+2025-01-10 06:44:03 - Missing required parameters: leaveid, status
+2025-01-10 06:44:58 - Raw data: {
+    "leaveid": "1",
+    "status": "Approved"
+}
+
+2025-01-10 06:44:58 - Decoded data: Array
+(
+    [leaveid] => 1
+    [status] => Approved
+)
+
+2025-01-10 06:44:58 - Sanitized leaveid: 1
+2025-01-10 06:44:58 - Sanitized status: Approved
+2025-01-10 06:44:58 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 06:45:08 - Raw data: {
+    "userid": "1",
+    "status": "Approved"
+}
+
+2025-01-10 06:45:08 - Decoded data: Array
+(
+    [userid] => 1
+    [status] => Approved
+)
+
+2025-01-10 06:45:08 - Missing required parameters: leaveid, status
+2025-01-10 06:45:50 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 06:45:50 - Decoded data: 
+2025-01-10 06:45:50 - Missing required parameters: leaveid, status
+2025-01-10 06:45:51 - Raw data: leaveid=N%2FA&status=Reject
+2025-01-10 06:45:51 - Decoded data: 
+2025-01-10 06:45:51 - Missing required parameters: leaveid, status
+2025-01-10 06:45:52 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 06:45:52 - Decoded data: 
+2025-01-10 06:45:52 - Missing required parameters: leaveid, status
+2025-01-10 06:45:54 - Raw data: leaveid=N%2FA&status=Reject
+2025-01-10 06:45:54 - Decoded data: 
+2025-01-10 06:45:54 - Missing required parameters: leaveid, status
+2025-01-10 06:45:56 - Raw data: leaveid=N%2FA&status=Reject
+2025-01-10 06:45:56 - Decoded data: 
+2025-01-10 06:45:56 - Missing required parameters: leaveid, status
+2025-01-10 06:46:41 - Invalid request method: GET method received
+2025-01-10 06:54:41 - Raw data: {
+  "userid": "123",
+  "status": "approved"
+  
+}
+
+2025-01-10 06:54:41 - Decoded data: Array
+(
+    [userid] => 123
+    [status] => approved
+)
+
+2025-01-10 06:54:41 - Sanitized userid: 123
+2025-01-10 06:54:41 - Sanitized status: approved
+2025-01-10 06:55:39 - Raw data: {
+  "userid": "123",
+  "status": "approved"
+  
+}
+
+2025-01-10 06:55:39 - Decoded data: Array
+(
+    [userid] => 123
+    [status] => approved
+)
+
+2025-01-10 06:55:39 - Sanitized userid: 123
+2025-01-10 06:55:39 - Sanitized status: approved
+2025-01-10 06:55:39 - Executing query: UPDATE leavetable SET status = ? WHERE userid = ?
+2025-01-10 06:57:39 - Raw data: {
+  "userid": "123",
+  "status": "approved"
+  
+}
+
+2025-01-10 06:57:39 - Decoded data: Array
+(
+    [userid] => 123
+    [status] => approved
+)
+
+2025-01-10 06:57:39 - Sanitized userid: 123
+2025-01-10 06:57:39 - Sanitized status: approved
+2025-01-10 06:57:39 - Executing query: UPDATE leavetable SET status = ? WHERE userid = ?
+2025-01-10 06:57:39 - No record found to update with userid: 123
+2025-01-10 06:57:45 - Raw data: {
+  "userid": "1",
+  "status": "approved"
+  
+}
+
+2025-01-10 06:57:45 - Decoded data: Array
+(
+    [userid] => 1
+    [status] => approved
+)
+
+2025-01-10 06:57:45 - Sanitized userid: 1
+2025-01-10 06:57:45 - Sanitized status: approved
+2025-01-10 06:57:45 - Executing query: UPDATE leavetable SET status = ? WHERE userid = ?
+2025-01-10 06:57:45 - No record found to update with userid: 1
+2025-01-10 06:57:51 - Raw data: {
+  "userid": "2",
+  "status": "approved"
+  
+}
+
+2025-01-10 06:57:51 - Decoded data: Array
+(
+    [userid] => 2
+    [status] => approved
+)
+
+2025-01-10 06:57:51 - Sanitized userid: 2
+2025-01-10 06:57:51 - Sanitized status: approved
+2025-01-10 06:57:51 - Executing query: UPDATE leavetable SET status = ? WHERE userid = ?
+2025-01-10 06:58:25 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 06:58:25 - Decoded data: 
+2025-01-10 06:58:25 - Missing required parameters: userid, status
+2025-01-10 06:58:51 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 06:58:51 - Decoded data: 
+2025-01-10 06:58:51 - Missing required parameters: userid, status
+2025-01-10 07:08:51 - Raw data: leaveid=N%2FA&status=Reject
+2025-01-10 07:08:51 - Decoded data: 
+2025-01-10 07:08:51 - Missing required parameters: userid, status
+2025-01-10 07:11:12 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 07:11:12 - Decoded data: 
+2025-01-10 07:11:12 - Missing required parameters: userid, status
+2025-01-10 07:12:40 - Raw data: leaveid=N%2FA&status=Approve
+2025-01-10 07:12:40 - Decoded data: 
+2025-01-10 07:12:40 - Action not specified
+2025-01-10 07:13:03 - Raw data: {
+    "action": "update",
+    "leaveid": "1",
+    "status": "approved"
+}
+
+2025-01-10 07:13:03 - Decoded data: Array
+(
+    [action] => update
+    [leaveid] => 1
+    [status] => approved
+)
+
+2025-01-10 07:13:03 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 07:13:15 - Raw data: {
+    "action": "update",
+    "userid": "1",
+    "status": "approved"
+}
+
+2025-01-10 07:13:15 - Decoded data: Array
+(
+    [action] => update
+    [userid] => 1
+    [status] => approved
+)
+
+2025-01-10 07:13:15 - Missing required parameters: leaveid
+2025-01-10 07:13:25 - Raw data: {
+    "action": "update",
+    "leaveid": "2",
+    "status": "approved"
+}
+
+2025-01-10 07:13:25 - Decoded data: Array
+(
+    [action] => update
+    [leaveid] => 2
+    [status] => approved
+)
+
+2025-01-10 07:13:25 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 07:13:34 - Raw data: {
+    "action": "update",
+    "leaveid": "2",
+    "status": "approved"
+}
+
+2025-01-10 07:13:34 - Decoded data: Array
+(
+    [action] => update
+    [leaveid] => 2
+    [status] => approved
+)
+
+2025-01-10 07:13:34 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 07:13:37 - Raw data: {
+    "action": "update",
+    "leaveid": "2",
+    "status": "approved"
+}
+
+2025-01-10 07:13:37 - Decoded data: Array
+(
+    [action] => update
+    [leaveid] => 2
+    [status] => approved
+)
+
+2025-01-10 07:13:37 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 07:13:38 - Raw data: {
+    "action": "update",
+    "leaveid": "2",
+    "status": "approved"
+}
+
+2025-01-10 07:13:38 - Decoded data: Array
+(
+    [action] => update
+    [leaveid] => 2
+    [status] => approved
+)
+
+2025-01-10 07:13:38 - Failed to prepare statement: Unknown column 'leaveid' in 'where clause'
+2025-01-10 07:14:10 - Raw data: {
+    "leaveid": "123",
+    "status": "Approved"
+}
+
+2025-01-10 07:14:10 - Decoded data: Array
+(
+    [leaveid] => 123
+    [status] => Approved
+)
+
+2025-01-10 07:14:10 - Action not specified
