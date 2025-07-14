@@ -2,11 +2,12 @@
 include("dbconnection.php");
 date_default_timezone_set("Africa/Mogadishu");
 
-$conn = dbconnection(); // ✅ Use this always!
+$conn = dbconnection();
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
+// Validate userID
 if (!isset($_GET['userID'])) {
     http_response_code(400);
     echo json_encode(["success" => false, "message" => "Missing userID"]);
@@ -14,8 +15,13 @@ if (!isset($_GET['userID'])) {
 }
 
 $userID = $_GET['userID'];
-$today = date('Y-m-d');
 
+// Use optional timestamp from device if provided
+$deviceTimestamp = isset($_GET['timestamp']) ? $_GET['timestamp'] : null;
+$referenceTime = $deviceTimestamp ?? date('c'); // fallback to server time
+$today = date('Y-m-d', strtotime($referenceTime));
+
+// Query based on device-defined date
 $query = "SELECT checkIn, checkOut, checkin_image, checkout_image 
           FROM employee_timestamp 
           WHERE userID = ? AND DATE(createdAt) = ?";

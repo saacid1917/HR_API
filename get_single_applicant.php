@@ -34,7 +34,7 @@ if (!isset($_GET['applicant_id'])) {
 $applicant_id = intval($_GET['applicant_id']);
 
 // === FETCH SINGLE APPLICANT DETAILS ===
-$sql = "SELECT id, first_name, last_name, email, phone, gender, experience, expected_salary, skills, cv_filename 
+$sql = "SELECT id, first_name, last_name, email, phone, gender, dob, password, experience, expected_salary, skills, cv_filename 
         FROM job_applications 
         WHERE id = ? LIMIT 1";
 
