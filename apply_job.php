@@ -29,6 +29,7 @@ if (
     isset($_POST['experience']) &&
     isset($_POST['expected_salary']) &&
     isset($_POST['skills']) && // ✅ NEW FIELD
+    isset($_POST['address']) && // ✅ ADD THIS LINE
     isset($_FILES['cv_file'])
 ) {
     // === SANITIZE INPUTS ===
@@ -43,6 +44,7 @@ if (
     $experience = $_POST['experience'];
     $expected_salary = $_POST['expected_salary'];
     $skills = $_POST['skills']; // ✅ NEW VARIABLE
+    $address = $_POST['address']; // ✅ NEW VARIABLE
 
     // === HANDLE FILE UPLOAD ===
     $target_dir = "uploads/cv/";
@@ -56,12 +58,12 @@ if (
     if (move_uploaded_file($_FILES["cv_file"]["tmp_name"], $target_file)) {
         // === PREPARE SQL ===
         $sql = "INSERT INTO job_applications 
-                (job_id, first_name, last_name, dob, gender, phone, email, password, experience, expected_salary, skills, cv_filename) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                (job_id, first_name, last_name, dob, gender, phone, email, password, experience, expected_salary, skills, address, cv_filename) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "isssssssssss", 
-            $job_id, $first_name, $last_name, $dob, $gender, $phone, $email, $password, $experience, $expected_salary, $skills, $filename
+        mysqli_stmt_bind_param($stmt, "issssssssssss", 
+            $job_id, $first_name, $last_name, $dob, $gender, $phone, $email, $password, $experience, $expected_salary, $skills, $address, $filename
         );
 
         // === EXECUTE SQL ===

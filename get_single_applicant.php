@@ -33,10 +33,26 @@ if (!isset($_GET['applicant_id'])) {
 
 $applicant_id = intval($_GET['applicant_id']);
 
-// === FETCH SINGLE APPLICANT DETAILS ===
-$sql = "SELECT id, first_name, last_name, email, phone, gender, dob, password, experience, expected_salary, skills, cv_filename 
-        FROM job_applications 
-        WHERE id = ? LIMIT 1";
+// === FETCH SINGLE APPLICANT DETAILS INCLUDING JOB SALARY ===
+$sql = "SELECT 
+            ja.id,
+            ja.job_id,
+            ja.first_name,
+            ja.last_name,
+            ja.email,
+            ja.phone,
+            ja.gender,
+            ja.dob,
+            ja.password,
+            ja.address,
+            ja.experience,
+            ja.expected_salary,
+            ja.skills,
+            ja.cv_filename,
+            j.salary AS job_salary
+        FROM job_applications ja
+        LEFT JOIN jobs j ON ja.job_id = j.id
+        WHERE ja.id = ? LIMIT 1";
 
 $stmt = mysqli_prepare($con, $sql);
 mysqli_stmt_bind_param($stmt, "i", $applicant_id);

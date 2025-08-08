@@ -19,7 +19,7 @@ if ($con->connect_error) {
     exit();
 }
 
-// Query all jobs
+// ✅ Filter jobs where deadline is today or in the future
 $sql = "SELECT 
             id,
             jobTitle,
@@ -37,6 +37,7 @@ $sql = "SELECT
             gender,
             created_at
         FROM jobs
+        WHERE deadline >= CURDATE()
         ORDER BY id DESC";
 
 $result = $con->query($sql);
