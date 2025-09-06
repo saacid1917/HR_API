@@ -34,7 +34,7 @@ if (!isset($data['title']) || !isset($data['place']) || !isset($data['date'])) {
 
 $seminarTitle = $data['title'];
 $seminarPlace = $data['place'];
-$seminarDate = $data['date'];
+$seminarDate  = $data['date'];
 
 // Fetch Admin Email
 $sqlAdmin = "SELECT email FROM users_table WHERE Role = 'admin' LIMIT 1";
@@ -79,11 +79,21 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'technoguideinfosoft.hr@gmail.com';
-    $mail->Password   = 'abbz bowk ufpr zhkj';
+
+    // SMART HR Gmail + App Password (from your first script)
+    $mail->Username   = 'saacidfaarah4@gmail.com';
+    $mail->Password   = 'pksq juji vsxd nipz';
+
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
-    $mail->setFrom($adminEmail, 'HR Department');
+
+    // Sender uses SMART HR branding
+    $mail->setFrom('saacidfaarah4@gmail.com', 'SMART HR');
+
+    // Optional reply-to to admin
+    if (!empty($adminEmail) && filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
+        $mail->addReplyTo($adminEmail, 'Admin');
+    }
 
     // Recipients
     while ($row = $resultEmployees->fetch_assoc()) {
@@ -93,6 +103,11 @@ try {
         }
     }
 
+    // Branding bits
+    $companyName = 'SMART HR';
+    $logoUrl     = 'https://i.imgur.com/OAp1xTt.png';
+    $year        = date('Y');
+
     // Content
     $mail->isHTML(true);
     $mail->Subject = "Seminar Cancellation: $seminarTitle";
@@ -100,11 +115,11 @@ try {
     <div style="font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa; padding: 30px; border-radius: 12px; border: none; max-width: 640px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
         <!-- Header Section -->
         <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,87,34,0.2);">
-            <img src="https://yt3.googleusercontent.com/ytc/AGIKgqNg7PjgzPar-A-1uZEMwqQgKcQIge1NNu80K1-wYQ=s900-c-k-c0x00ffffff-no-rj" 
-                 alt="TGI Logo" 
+            <img src="{$logoUrl}" 
+                 alt="{$companyName} Logo" 
                  style="max-width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #ff5722; padding: 5px; background: white; box-shadow: 0 4px 12px rgba(255,87,34,0.2);">
             <h1 style="font-size: 26px; color: #2c3e50; font-weight: 600; margin: 0; letter-spacing: 1px;">
-                Techno Guide Infosoft Pvt Ltd
+                {$companyName}
                 <div style="width: 80px; height: 3px; background: linear-gradient(90deg, #ff5722, #ff9800); margin: 10px auto; border-radius: 3px;"></div>
             </h1>
         </div>
@@ -124,25 +139,25 @@ try {
                 <span style="color: #dc3545; font-size: 20px; margin-right: 15px;">❌</span>
                 <div>
                     <div style="font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Canceled Seminar</div>
-                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">$seminarTitle</div>
+                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">{$seminarTitle}</div>
                 </div>
             </div>
             
             <!-- Location Section -->
             <div style="display: flex; align-items: center; padding: 18px 20px; border-bottom: 1px solid #f1f1f1;">
-                <span style="color: #007BFF; font-size: 20px; margin-right: 15px;">📍</span>
+                <span style="font-size: 20px; margin-right: 15px;">📍</span>
                 <div>
                     <div style="font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Originally Scheduled Venue</div>
-                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">$seminarPlace</div>
+                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">{$seminarPlace}</div>
                 </div>
             </div>
             
             <!-- Date Section -->
             <div style="display: flex; align-items: center; padding: 18px 20px;">
-                <span style="color: #28a745; font-size: 20px; margin-right: 15px;">📅</span>
+                <span style="font-size: 20px; margin-right: 15px;">📅</span>
                 <div>
                     <div style="font-size: 12px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Originally Scheduled Date</div>
-                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">$seminarDate</div>
+                    <div style="font-size: 16px; color: #2c3e50; font-weight: 600;">{$seminarDate}</div>
                 </div>
             </div>
         </div>
@@ -158,13 +173,13 @@ try {
         <!-- Signature -->
         <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.05);">
             <p style="color: #2c3e50; font-size: 15px; font-weight: 600; margin-bottom: 5px;">Best Regards,</p>
-            <p style="color: #7f8c8d; font-size: 14px; margin: 0 0 10px;">HR Department</p>
-            <img src="https://via.placeholder.com/120x40?text=TGI+Signature" alt="Company Signature" style="height: 40px; margin-top: 10px; opacity: 0.8;">
+            <p style="color: #7f8c8d; font-size: 14px; margin: 0 0 10px;">{$companyName}</p>
+            <img src="{$logoUrl}" alt="{$companyName} Signature" style="height: 40px; margin-top: 10px; opacity: 0.8;">
         </div>
     
         <!-- Footer -->
         <footer style="margin-top: 40px; text-align: center; font-size: 12px; color: #95a5a6;">
-            © 2023 Techno Guide Infosoft Pvt Ltd. All Rights Reserved.<br>
+            © {$year} {$companyName}. All Rights Reserved.<br>
             <div style="margin-top: 8px;">
                 <a href="#" style="color: #95a5a6; text-decoration: none; margin: 0 8px;">Privacy Policy</a> | 
                 <a href="#" style="color: #95a5a6; text-decoration: none; margin: 0 8px;">Contact Us</a> | 
